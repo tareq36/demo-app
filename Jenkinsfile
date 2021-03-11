@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                withMaven {
+                    sh 'mvn clean install'
+                }
                 sh 'java -jar target/demo.jar'
             }
         }
