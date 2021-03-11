@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'mvn-3.6.3'
+      }
 
     triggers {
         pollSCM '* * * * *'
@@ -7,9 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withMaven {
-                    sh 'mvn clean install'
-                }
+                sh 'mvn clean install'
                 sh 'java -jar target/demo.jar'
             }
         }
