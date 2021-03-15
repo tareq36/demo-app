@@ -1,4 +1,8 @@
 pipeline {
+    environment{
+        imagename="demoapp"
+        dockerImage=''
+    }
     agent {
           docker {
                 image 'maven:3.6.3'
@@ -16,11 +20,19 @@ pipeline {
             }
         }
         stage('Build Docker image') {
-                    steps {
-                        sh 'docker build -t demoapp'
-                        sh 'docker run demoapp'
-                    }
+            steps {
+                script{
+                    dockerImage=docker.build imagename
+                    dockerPush.run
                 }
+            }
+        }
+//         stage('Build Docker image') {
+//                     steps {
+//                         sh 'docker build -t demoapp'
+//                         sh 'docker run demoapp'
+//                     }
+//                 }
 //                 stage('Push Docker image') {
 //                     environment {
 //                         DOCKER_HUB_LOGIN = credentials('docker-hub')
