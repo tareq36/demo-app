@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Run Docker image') {
             steps {
-                sh 'docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -p 8085:8085 demoapp'
+                sh 'docker run --name demoapp -d -v $(which docker):/usr/bin/docker -p 8085:8085'
                 echo 'Run Docker Docker...'
             }
         }
