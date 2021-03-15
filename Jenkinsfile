@@ -14,17 +14,26 @@ pipeline {
         pollSCM '* * * * *'
     }
     stages {
-        stage('Build') {
+        stage('Build Project') {
             steps {
                 sh 'mvn clean package'
+                echo 'Build Project Done...'
             }
         }
         stage('Build Docker image') {
             steps {
-                script{
-                    dockerImage=docker.build imagename
-//                     dockerPush.run
-                }
+                sh 'docker build -t demoapp .'
+                echo 'Build Docker Done...'
+//                 script{
+//                     dockerImage=docker.build imagename
+// //                     dockerPush.run
+//                 }
+            }
+        }
+        stage('Run Docker image') {
+            steps {
+                sh 'docker run -d -v /var/run/docker.sock:/var/run/docker.sock \ -v $(which docker):/usr/bin/docker -p 8085:8085 demoapp'
+                echo 'Run Docker Docker...'
             }
         }
 //         stage('Build Docker image') {
