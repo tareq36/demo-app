@@ -20,16 +20,16 @@ pipeline {
                 echo 'Build Project Done...'
             }
         }
-        stage('Build Docker image') {
-            steps {
-                sh 'docker build -t demoapp .'
-                echo 'Build Docker Done...'
-//                 script{
-//                     dockerImage=docker.build imagename
-// //                     dockerPush.run
-//                 }
-            }
-        }
+//         stage('Build Docker image') {
+//             steps {
+//                 sh 'docker build -t demoapp .'
+//                 echo 'Build Docker Done...'
+// //                 script{
+// //                     dockerImage=docker.build imagename
+// // //                     dockerPush.run
+// //                 }
+//             }
+//         }
 //         stage('Run Docker image') {
 //             steps {
 //                 sh 'docker run --name demoapp -d -v $(which docker):/usr/bin/docker -p 8085:8085'
