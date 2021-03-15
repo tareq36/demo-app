@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script{
                     dockerImage=docker.build imagename
-                    dockerPush.run
+//                     dockerPush.run
                 }
             }
         }
