@@ -1,2 +1,2 @@
-itle of the document
+title of the document
 
