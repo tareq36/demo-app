@@ -1,11 +1,2 @@
- <!DOCTYPE html>
-<html>
-<head>
-<title>Title of the document</title>
-</head>
+itle of the document
 
-<body>
-The content of the document......
-</body>
-
-</html> 
