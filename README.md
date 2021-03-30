@@ -1,2 +1,3 @@
-title of the document
-
+CMD:
+./gradlew build dockerRun
+./gradlew dockerStop
